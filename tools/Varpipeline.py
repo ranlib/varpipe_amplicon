@@ -12,10 +12,10 @@ if __name__ == '__main__':
     import sys
     import os
     import re
-    import Varpipeline
+    import snp
     import argparse as ap
     import gzip
-    import commands
+    import subprocess
 
     parser = ap.ArgumentParser(prog='Varpipeline', conflict_handler='resolve', 
                                description="Varpipeline - Call SNPs and InDels")
@@ -53,18 +53,18 @@ if __name__ == '__main__':
     # Verify input FASTQ file exists
     if not os.path.isfile(args.fastq):
         error += 1
-        print "Please check if input '%s' exists, then try again." % args.fastq
+        print("Please check if input '%s' exists, then try again." % args.fastq)
     
     # Verify reference file exists
     if not os.path.isfile(args.reference):
         error += 1
-        print "Please check if reference '%s' exists, then try again." % args.reference
+        print("Please check if reference '%s' exists, then try again." % args.reference)
     
     # Check paired end, and verify exists
     if args.fastq2:
        if not os.path.isfile(args.fastq2):
           error += 1
-          print "Please check that '%s' exists, then try again." % args.fastq2
+          print("Please check that '%s' exists, then try again." % args.fastq2)
        else:
             paired = True
     else:
@@ -77,8 +77,8 @@ if __name__ == '__main__':
     
     # Check for errors if so, print usage
     if error:
-        print ""
-        print "Use --help for more information."
+        print("")
+        print("Use --help for more information.")
         parser.print_usage()
         sys.exit(2)
     
@@ -97,11 +97,11 @@ if __name__ == '__main__':
         args.outdir = args.name
 
     if args.verbose:
-        print ' '.join(sys.argv)
-        print ""
+        print(' '.join(sys.argv))
+        print("")
         
     # All is well let's get started!
-    s = Varpipeline.snp(args.fastq, args.outdir, args.reference, args.name, paired, args.fastq2, 
+    s = snp.snp(args.fastq, args.outdir, args.reference, args.name, paired, args.fastq2, 
                         args.verbose, ' '.join(sys.argv))
     # run Clockwork decontamination
     #s.runClockwork()

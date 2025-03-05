@@ -13,7 +13,7 @@ import os
 import types
 import gzip
 import yaml
-import ConfigParser
+import configparser
 import io
 from datetime import datetime
 
@@ -59,12 +59,12 @@ class snp():
         for lines in fh10:
             line = lines.rstrip("\r\n")
             if line.startswith("tools") or line.startswith("scripts") or line.startswith("other"):
-               print >>fh20, line
+               print(line, file=fh20)
             elif "threads" in line:
-               print >>fh20, line
+               print(line, file=fh20)
             else:
                lined = line.split(":")
-               print >>fh20, lined[0] + ":" + " " + os.path.dirname(__file__) + lined[1][1:]
+               print(lined[0] + ":" + " " + os.path.dirname(__file__) + lined[1][1:], file=fh20)
         fh10.close()
         fh20.close()
 
@@ -110,9 +110,9 @@ class snp():
         p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out,err = p.communicate()
 
-        if (type(program) is list):
-            o = open(program[1], 'w')
-            o.write(out)
+        if ( isinstance(program, list) ):
+            o = open(program[1], 'wt')
+            o.write(out.decode())
             o.close()
             out = ""
             program = program[0]
@@ -121,9 +121,9 @@ class snp():
             self.__logFH.write('---[ '+ program +' ]---\n')
             self.__logFH.write('Command: \n' + ' '.join(command) + '\n\n')
             if out:
-                self.__logFH.write('Standard Output: \n' + out + '\n\n')
+                self.__logFH.write('Standard Output: \n' + out.decode() + '\n\n')
             if err:
-                self.__logFH.write('Standard Error: \n' + err + '\n\n')
+                self.__logFH.write('Standard Error: \n' + err.decode() + '\n\n')
         return 1
     
     """ Clockwork Decontamination """
@@ -178,21 +178,21 @@ class snp():
         self.__CallCommand('mkdir', ['mkdir', '-p', out])
         self.__CallCommand('cp', ['cp', self.reference, out + "/ref.fa"])
         self.reference = out + "/ref.fa"
-        self.__CallCommand('bwa index', [self.__bwa, 'index', self.reference])
+        self.__CallCommand('bwa index', ["bwa", 'index', self.reference])
         self.__CallCommand('CreateSequenceDictionary', ['java', '-jar', self.__picard, 
                            'CreateSequenceDictionary', 'R='+self.reference,'O='+ out + "/ref.dict"])
-        self.__CallCommand('samtools faidx', [self.__samtools, 'faidx', self.reference ])
+        self.__CallCommand('samtools faidx', ["samtools", 'faidx', self.reference ])
 
     def __bwaLongReads(self, out):
         """ Make use of bwa mem """
         if self.paired:
             self.__ifVerbose("   Running BWA mem on paired end reads.")
-            self.__CallCommand(['bwa mem', self.__alnSam], [self.__bwa, 'mem','-t',self.__threads,'-R', 
+            self.__CallCommand(['bwa mem', self.__alnSam], ["bwa", 'mem','-t',self.__threads,'-R', 
                                "@RG\\tID:" + self.name + "\\tSM:" + self.name + "\\tPL:ILLUMINA", 
                                 self.reference, self.input, self.input2])
         else:
             self.__ifVerbose("   Running BWA mem on single end reads.")
-            self.__CallCommand(['bwa mem', self.__alnSam], [self.__bwa, 'mem','-t', self.__threads, '-R', 
+            self.__CallCommand(['bwa mem', self.__alnSam], ["bwa", 'mem','-t', self.__threads, '-R', 
                                "@RG\\tID:" + self.name + "\\tSM:" + self.name + "\\tPL:ILLUMINA", 
                                 self.reference, self.input])       
 
@@ -228,19 +228,19 @@ class snp():
         self.__ifVerbose("   Running BuildBamIndex.")
         self.__CallCommand('BuildBamIndex', ['java', '-Xmx8g', '-jar', self.__picard, 'BuildBamIndex',  
                            'INPUT='+ GATKdir +'/GATK_sdr.bam', 'VALIDATION_STRINGENCY=LENIENT'])
-        self.__CallCommand(['samtools view', samDir + '/unmapped.txt'],[self.__samtools, 'view', '-c', GATKdir +'/GATK_sdr.bam'])
+        self.__CallCommand(['samtools view', samDir + '/unmapped.txt'],["samtools", 'view', '-c', GATKdir +'/GATK_sdr.bam'])
       
         """ Filter out unmapped reads """
         self.__finalBam = self.fOut + '/'+ self.name + '_sdrcsm.bam'
         self.__ifVerbose("   Running samtools view.")
-        self.__CallCommand('samtools view', [self.__samtools, 'view', '-bhF', '4', '-o', self.__finalBam, 
+        self.__CallCommand('samtools view', ["samtools", 'view', '-bhF', '4', '-o', self.__finalBam, 
                            GATKdir +'/GATK_sdr.bam'])
         self.__ifVerbose("   Running BuildBamIndex.")
         self.__CallCommand('BuildBamIndex', ['java', '-Xmx8g', '-jar', self.__picard, 'BuildBamIndex', 'INPUT='+ self.__finalBam, 
                            'VALIDATION_STRINGENCY=LENIENT'])
         self.__ifVerbose("")
         self.__CallCommand('rm', ['rm', '-r', self.tmp])
-        self.__CallCommand(['samtools view', samDir + '/mapped.txt'],[self.__samtools, 'view', '-c', self.__finalBam])
+        self.__CallCommand(['samtools view', samDir + '/mapped.txt'],["samtools", 'view', '-c', self.__finalBam])
     
     """ Callers """
 
@@ -330,4 +330,4 @@ class snp():
            self.__logged = False
     def __ifVerbose(self, msg):
         """ If verbose print a given message. """
-        if self.verbose: print msg
+        if self.verbose: print(msg)

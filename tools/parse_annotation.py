@@ -60,7 +60,7 @@ for lines in fh2:
 fh2.close()
     
 fh1 = open(input1,'r')
-print "Sample ID" + "\t" + "CHROM" + "\t" + "POS" + "\t" + "REF" + "\t" + "ALT" + "\t" + "Read Depth" + "\t" + "Percent Alt Allele" + "\t" +  "Annotation" + "\t" + "Variant Type" + "\t" + "Nucleotide Change" + "\t" + "Position within CDS " + "\t" + "Amino acid Change" + "\t" + "REF Amino acid" + "\t" + "ALT Amino acid" + "\t" + "Codon Position" + "\t" + "Gene Name" + "\t" + "Gene ID\r" 
+print("Sample ID" + "\t" + "CHROM" + "\t" + "POS" + "\t" + "REF" + "\t" + "ALT" + "\t" + "Read Depth" + "\t" + "Percent Alt Allele" + "\t" +  "Annotation" + "\t" + "Variant Type" + "\t" + "Nucleotide Change" + "\t" + "Position within CDS " + "\t" + "Amino acid Change" + "\t" + "REF Amino acid" + "\t" + "ALT Amino acid" + "\t" + "Codon Position" + "\t" + "Gene Name" + "\t" + "Gene ID\r") 
 
 for lines in fh1:
     if lines.startswith("#"):
@@ -192,7 +192,7 @@ for lines in fh1:
                 orig_aacid         = 'NA'
                 new_aacid	   = 'NA'
                 codon_pos	   = 'NA'
-       print  input3 + "\t" + fields[0] + "\t" + position + "\t" + reference + "\t" + alternate + "\t" + read_depth + "\t" + perc_alt + "\t" + annotation + "\t" + variant + "\t" + nucleotide_change + "\t" + transcript_pos + "\t" + amino_acid_change + "\t" + orig_aacid + "\t" + new_aacid + "\t" + codon_pos + "\t" + gene_name + "\t" + gene_id + "\r"
+       print(input3 + "\t" + fields[0] + "\t" + position + "\t" + reference + "\t" + alternate + "\t" + read_depth + "\t" + perc_alt + "\t" + annotation + "\t" + variant + "\t" + nucleotide_change + "\t" + transcript_pos + "\t" + amino_acid_change + "\t" + orig_aacid + "\t" + new_aacid + "\t" + codon_pos + "\t" + gene_name + "\t" + gene_id + "\r")
     
     else:
         if len(smallannot[10]) < 13:
@@ -330,7 +330,7 @@ for lines in fh1:
               new_aacid          = 'NA'
               codon_pos          = 'NA'
               break
-        print input3 + "\t" + fields[0] + "\t" + position + "\t" + reference + "\t" + alternate + "\t" + read_depth + "\t" + perc_alt + "\t" + annotation + "\t" + variant + "\t" + nucleotide_change + "\t" + transcript_pos + "\t" + amino_acid_change + "\t" + orig_aacid + "\t" + new_aacid + "\t" + codon_pos + "\t" + gene_name + "\t" + gene_id + "\r"
+        print(input3 + "\t" + fields[0] + "\t" + position + "\t" + reference + "\t" + alternate + "\t" + read_depth + "\t" + perc_alt + "\t" + annotation + "\t" + variant + "\t" + nucleotide_change + "\t" + transcript_pos + "\t" + amino_acid_change + "\t" + orig_aacid + "\t" + new_aacid + "\t" + codon_pos + "\t" + gene_name + "\t" + gene_id + "\r")
 
 fh1.close()
 

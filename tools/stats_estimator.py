@@ -46,6 +46,6 @@ percent_mapped = (float(mapped)/float(unmapped))*100.00
 str_percent_mapped = "{0:.2f}".format(percent_mapped)
 i = datetime.now()
 
-print "Sample ID" + "\t" + "Sample Name" + "\t" + "Total reads from sequence file" + "\t" + "Number of mapped reads" + "\t" + "Percent mapped reads" + "\t" + "Low Coverage" + "\t" + "Pipeline Version" + "\t" + "Date\r"
-print input4 + "\t" + input5 + "\t" + str(unmapped) + "\t" +  str(mapped) + "\t" +  str_percent_mapped + "\t" + str(low_cov_count) + "\t" + "Varpipeline: Varpipe_amplicons_1.0.1" + "\t" + i.strftime('%Y/%m/%d %H:%M:%S') + "\r"
+print("Sample ID" + "\t" + "Sample Name" + "\t" + "Total reads from sequence file" + "\t" + "Number of mapped reads" + "\t" + "Percent mapped reads" + "\t" + "Low Coverage" + "\t" + "Pipeline Version" + "\t" + "Date\r")
+print(input4 + "\t" + input5 + "\t" + str(unmapped) + "\t" +  str(mapped) + "\t" +  str_percent_mapped + "\t" + str(low_cov_count) + "\t" + "Varpipeline: Varpipe_amplicons_1.0.1" + "\t" + i.strftime('%Y/%m/%d %H:%M:%S') + "\r")
 

@@ -25,33 +25,33 @@ annot  = ['760314','760315','760316','761277','761278','761279','4247730','42477
           '6620','6621','6622','1473246','1473247','1473329','1475927','1476471','2715344','2715346',
           '4247573','4247574','4247575','4247729','4247468', '4247469', '4247470']
 
-print "Sample Summary:"
+print("Sample Summary:")
 
 fh1 = open(input1,'r')
 for lines in fh1:
     lined = lines.rstrip("\r\n").split("\t")
     matrix.append(lined)
-print matrix[0][0] + ":" + "\t" + matrix[1][0]
-print matrix[0][1] + ":" + "\t" + matrix[1][1]
-print matrix[0][5] + ":" + "\t" + matrix[1][5]
-print matrix[0][6] + ":" + "\t" + matrix[1][6]
-print matrix[0][7] + ":" + "\t" + matrix[1][7]
+print(matrix[0][0] + ":" + "\t" + matrix[1][0])
+print(matrix[0][1] + ":" + "\t" + matrix[1][1])
+print(matrix[0][5] + ":" + "\t" + matrix[1][5])
+print(matrix[0][6] + ":" + "\t" + matrix[1][6])
+print(matrix[0][7] + ":" + "\t" + matrix[1][7])
 fh1.close()
     
-print "\n"
-print "Amplicon Target Summary:"
+print("\n")
+print("Amplicon Target Summary:")
 
 fh2 = open(input2,'r')
 for lines in fh2:
     lined = lines.rstrip("\r\n").split("\t")
-    print lined[5] + "\t" + lined[2] + "\t" + lined[3] + "\t" + lined[6] + "\t" + lined[7] + "\t" + lined[8]
+    print(lined[5] + "\t" + lined[2] + "\t" + lined[3] + "\t" + lined[6] + "\t" + lined[7] + "\t" + lined[8])
 fh2.close()
 
-print "\n"
-print "Variant Summary:"
+print("\n")
+print("Variant Summary:")
 
 fh3 = open(input3,'r')
-print "POS" + "\t" + "Gene Name" + "\t" + "Nucleotide Change" + "\t" + "Amino acid Change" + "\t" + "Read Depth" + "\t" + "Percent Alt Allele" + "\t" + "Annotation" + "\t" + "Flag"
+print("POS" + "\t" + "Gene Name" + "\t" + "Nucleotide Change" + "\t" + "Amino acid Change" + "\t" + "Read Depth" + "\t" + "Percent Alt Allele" + "\t" + "Annotation" + "\t" + "Flag")
 
 for lines in fh3:
     if lines.startswith("Sample ID"):
@@ -81,6 +81,6 @@ for lines in fh3:
          flag = "Y"
     else:
          flag = ""
-    print lined[2] + "\t" + lined[15] + "\t" + lined[9] + "\t" + lined[11] + "\t" + lined[5] + "\t" + lined[6]  + "\t" + lined[7] + "\t" + flag
+    print(lined[2] + "\t" + lined[15] + "\t" + lined[9] + "\t" + lined[11] + "\t" + lined[5] + "\t" + lined[6]  + "\t" + lined[7] + "\t" + flag)
 fh3.close()
 

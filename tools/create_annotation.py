@@ -51,7 +51,7 @@ ANN                 = ""
 
 fh1 = open(input1,'r')
 
-print "Sample ID" + "\t" + "CHROM" + "\t" + "POS" + "\t" + "REF" + "\t" + "ALT" + "\t" + "FILTER" + "\t" + "GT" + "\t" +  "AD" + "\t" + "AF" + "\t" + "DP" + "\t" + "F1R2 " + "\t" + "F2R1" + "\t" + "PGT" + "\t" + "PID" + "\t" + "PS" + "\t" "SB" + "\t" + "CONTQ" + "\t" + "rawDP" + "\t" + "ECNT" + "\t" + "MBQ" + "\t" + "MFRL" + "\t" + "MMQ" + "\t" + "MPOS" + "\t" + "POPAF" + "\t" + "RPA" + "\t" + "RU" + "\t" + "SEQQ" + "\t" + "STRANDQ" + "\t" + "TLOD" + "\t" + "ANN\r"  
+print("Sample ID" + "\t" + "CHROM" + "\t" + "POS" + "\t" + "REF" + "\t" + "ALT" + "\t" + "FILTER" + "\t" + "GT" + "\t" +  "AD" + "\t" + "AF" + "\t" + "DP" + "\t" + "F1R2 " + "\t" + "F2R1" + "\t" + "PGT" + "\t" + "PID" + "\t" + "PS" + "\t" "SB" + "\t" + "CONTQ" + "\t" + "rawDP" + "\t" + "ECNT" + "\t" + "MBQ" + "\t" + "MFRL" + "\t" + "MMQ" + "\t" + "MPOS" + "\t" + "POPAF" + "\t" + "RPA" + "\t" + "RU" + "\t" + "SEQQ" + "\t" + "STRANDQ" + "\t" + "TLOD" + "\t" + "ANN\r")  
 
 for lines in fh1:
     if lines.startswith("#"):
@@ -105,6 +105,6 @@ for lines in fh1:
             RPA     = x.split("=")[1]
 	if "RU" in x:
        	    RU      = x.split("=")[1]
-    print input2 + "\t" + fields[0] + "\t" + position + "\t" + reference + "\t" + alternate + "\t" + filterr + "\t" + GT + "\t" + AD + "\t" + AF + "\t" + DP + "\t" + F1R2 + "\t" + F2R1 + "\t" + PGT + "\t" + PID + "\t" + PS + "\t" + SB + "\t" + CONTQ + "\t" + rDP + "\t" + ECNT + "\t"+ MBQ + "\t" + MFRL + "\t" + MMQ + "\t" + MPOS + "\t" + POPAF + "\t" + RPA + "\t" + RU + "\t"+ SEQQ + "\t" + STRANDQ + "\t" + TLOD + "\t" + ANN + "\r" 
+    print(input2 + "\t" + fields[0] + "\t" + position + "\t" + reference + "\t" + alternate + "\t" + filterr + "\t" + GT + "\t" + AD + "\t" + AF + "\t" + DP + "\t" + F1R2 + "\t" + F2R1 + "\t" + PGT + "\t" + PID + "\t" + PS + "\t" + SB + "\t" + CONTQ + "\t" + rDP + "\t" + ECNT + "\t"+ MBQ + "\t" + MFRL + "\t" + MMQ + "\t" + MPOS + "\t" + POPAF + "\t" + RPA + "\t" + RU + "\t"+ SEQQ + "\t" + STRANDQ + "\t" + TLOD + "\t" + ANN + "\r") 
     (PGT,PID,PS,RPA,RU) = ("","","","","")
 fh1.close()

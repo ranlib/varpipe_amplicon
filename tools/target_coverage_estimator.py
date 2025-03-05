@@ -35,7 +35,7 @@ for lines in fh1:
 
 fh1.close()
 
-print "SAMPLE_ID" + "\t" + "CHROM" + "\t" + "Start" + "\t" + "End" + "\t" + "Gene ID" + "\t" + "Gene Name" + "\t" + "Avg Depth" + "\t" + "Percent Width" + "\t" + "Flag\r"
+print("SAMPLE_ID" + "\t" + "CHROM" + "\t" + "Start" + "\t" + "End" + "\t" + "Gene ID" + "\t" + "Gene Name" + "\t" + "Avg Depth" + "\t" + "Percent Width" + "\t" + "Flag\r")
 
 new_start = start[idx]
 new_end   = end[idx]
@@ -61,7 +61,7 @@ for lines in fh2:
          else:
             flag = "review"
         
-         print input3 + "\t" + "NC_000962.3" + "\t" + new_start + "\t" + new_end + "\t" + gene_name[idx] + "\t" + ids[idx] + "\t" + avg_cov_str + "\t" + covp_str + "\t" + flag + "\r"
+         print(input3 + "\t" + "NC_000962.3" + "\t" + new_start + "\t" + new_end + "\t" + gene_name[idx] + "\t" + ids[idx] + "\t" + avg_cov_str + "\t" + covp_str + "\t" + flag + "\r")
          sum_cov = 0
          if idx < len(start) - 1:
             idx += 1
