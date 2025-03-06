@@ -2,7 +2,7 @@
 
 import sys
 import re
-from string import join
+#from string import join
 
 
 """ The script accepts a SnpEff annotated VCF file and the sample ID name (string) as input options """
