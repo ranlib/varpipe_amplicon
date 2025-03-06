@@ -12,7 +12,7 @@ DTBE LB CDC Atlanta
 
 from fpdf import FPDF
 import csv
-from string import join
+#from string import join
 import sys
 
 class PDF(FPDF):
