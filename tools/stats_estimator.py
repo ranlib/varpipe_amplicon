@@ -12,7 +12,7 @@ DTBE LB CDC Atlanta
 
 import sys
 import os
-from string import join
+#from string import join
 from datetime import datetime
 
 input1 = sys.argv[1]
