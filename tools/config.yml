@@ -12,14 +12,15 @@ tools:
     ref_fasta: /clockwork-0.9.0/OUT/ref.fa
     ref_metadata: /clockwork-0.9.0/OUT/remove_contam_metadata.tsv         
 scripts:
-    parser: /home/dieterbest/Analysis/varpipe_amplicon/tools/parse_annotation.py
-    creater:  /home/dieterbest/Analysis/varpipe_amplicon/tools/create_annotation.py
-    included:  /home/dieterbest/Analysis/varpipe_amplicon/tools/intervals.bed
-    stats_estimator:  /home/dieterbest/Analysis/varpipe_amplicon/tools/stats_estimator.py
-    bedlist_amp:  /home/dieterbest/Analysis/varpipe_amplicon/tools/amp_bed.txt      
-    target_cov_estimator:  /home/dieterbest/Analysis/varpipe_amplicon/tools/target_coverage_estimator.py
-    mutationloci:  /home/dieterbest/Analysis/varpipe_amplicon/tools/mutation_loci.txt
-    create_report:  /home/dieterbest/Analysis/varpipe_amplicon/tools/create_report.py
-    print_report: /home/dieterbest/Analysis/varpipe_amplicon/tools/pdf_print.py
+    parser: /home/dbest/Software/varpipe_amplicon/tools/parse_annotation.py
+    creater:  /home/dbest/Software/varpipe_amplicon/tools/create_annotation.py
+    included:  /home/dbest/Software/varpipe_amplicon/tools/intervals.bed
+    stats_estimator:  /home/dbest/Software/varpipe_amplicon/tools/stats_estimator.py
+    bedlist_amp:  /home/dbest/Software/varpipe_amplicon/tools/amp_bed.txt
+    snpeff_config: /home/dbest/Software/varpipe_amplicon/tools/snpEff/snpEff.config
+    target_cov_estimator:  /home/dbest/Software/varpipe_amplicon/tools/target_coverage_estimator.py
+    mutationloci:  /home/dbest/Software/varpipe_amplicon/tools/mutation_loci.txt
+    create_report:  /home/dbest/Software/varpipe_amplicon/tools/create_report.py
+    print_report: /home/dbest/Software/varpipe_amplicon/tools/pdf_print.py
 other:
     threads: '12'
