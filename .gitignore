@@ -172,3 +172,4 @@ cython_debug/
 
 # addition by Dieter Best 2025.03.05
 *.bak
+*~
